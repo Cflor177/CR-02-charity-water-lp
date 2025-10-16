@@ -32,6 +32,15 @@ body {
   color: #222;
 }
 
+/* Basic page styles */
+body {
+    font-family: Arial, sans-serif; /* simple, readable font */
+    line-height: 1.5;
+    margin: 0;
+    color: #222;
+    background: #f7f9fb;
+}
+
 /* Add a slight shadow and rounded corners to each section for depth */
 section {
   background: #fff; /* White background for sections */
@@ -39,6 +48,13 @@ section {
   box-shadow: 0 2px 8px rgba(46, 157, 247, 0.07); /* Soft blue shadow */
   margin: 24px 10px; /* Space between sections */
   padding: 24px 16px;
+}
+
+/* Center content and limit width so lines are easy to read */
+section {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 16px;
 }
 
 /* Hero Section Styles */
@@ -106,6 +122,21 @@ h2 {
   border-radius: 10px;
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(46, 157, 247, 0.10);
+}
+
+/* Impact story: image on the left, text on the right using float (beginner pattern) */
+.impact-content {
+    background: white;
+    padding: 16px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    overflow: auto; /* clear floated image */
+}
+.impact-image {
+    float: left;             /* lets text flow around image */
+    width: 40%;              /* image takes 40% of the space on larger screens */
+    margin-right: 16px;      /* space between image and text */
+    border-radius: 4px;
 }
 
 /* Donate Button Styles */
@@ -195,4 +226,13 @@ section {
   .impact-image {
     width: 300px;
   }
+}
+
+/* Simple responsive rule: on small screens make the image full width */
+@media (max-width: 600px) {
+    .impact-image {
+        float: none;
+        width: 100%;
+        margin: 0 0 12px 0;
+    }
 }
