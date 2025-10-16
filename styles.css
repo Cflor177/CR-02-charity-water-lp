@@ -23,247 +23,344 @@ Fonts:
   This CSS uses the provided color palette and beginner-friendly styles.
 */
 
-/* Brand palette variables (based on your provided colors) */
+/* Brand variables and improved page background for better visual harmony */
+:root {
+  --brand-blue:   #2E9DF7;
+  --brand-yellow: #FFC907;
+  --brand-teal:   #78c6bb;
+  --brand-green:  #4FCB53;
+  --brand-coral:  #FF6B5A;
+  --navy-deep:    #174b6a;
+  --page-bg-a:    rgba(46,157,247,0.03);
+  --muted-text:   #22303a;
+  --card-shadow:  rgba(23,75,106,0.06);
+  --card-shadow-strong: rgba(23,75,106,0.10);
+}
+
+/* Brand palette variables (easy to adjust) */
 :root {
   --yellow:     #FFC907; /* Primary yellow */
   --blue:       #2E9DF7; /* Primary blue */
   --light-blue: #8BD1CB; /* Secondary light blue */
   --green:      #4FCB53; /* Accent green */
   --orange:     #FF902A; /* Accent orange */
-  --red:        #F5402C; /* Accent red */
-  --dark-green: #159A48; /* Dark green */
-  --pink:       #F16061; /* Accent pink */
-
-  /* Harmonized additions for depth and contrast */
-  --navy-deep:  #174b6a; /* deep navy for buttons/contrast */
-  --teal-soft:  #78c6bb; /* softer teal for subtle accents */
-  --page-bg-a:  rgba(46,157,247,0.03); /* soft blue tint */
-  --page-bg-b:  rgba(120,198,187,0.02); /* soft teal tint */
-  --muted-text: #22303a;
+  --coral:      #FF6B5A; /* Warm coral for highlights */
+  --navy:       #174b6a; /* Deep accent for high-contrast CTA */
+  --muted:      #22303a; /* Body text */
+  --tint-a:     rgba(46,157,247,0.06);
+  --tint-b:     rgba(255,201,7,0.03);
   --card-shadow: rgba(23,75,106,0.06);
   --card-shadow-strong: rgba(23,75,106,0.10);
 }
 
-/* Set up the main font and background color for the whole page */
+/* Update page background to a gentle layered gradient for subtle depth */
 body {
-  /* keep the original readable font but add a soft layered background */
-  /* font-family is already set earlier; this rule intentionally just updates background and color */
-  background: radial-gradient(900px 400px at 10% 10%, var(--page-bg-a), transparent 8%),
-              linear-gradient(180deg, #fbfdfe 0%, #f3f8fa 100%);
-  color: var(--muted-text);
+  /* keep a readable, beginner-friendly font stack */
+  font-family: 'Proxima Nova', 'Avenir Next', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(800px 420px at 12% 12%, rgba(46,157,247,0.06), transparent 6%),
+    linear-gradient(180deg, rgba(137,218,208,0.04) 0%, rgba(255,238,220,0.02) 100%);
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
 }
 
-/* Basic page styles */
-body {
-    font-family: Arial, sans-serif; /* simple, readable font */
-    line-height: 1.5;
-    margin: 0;
-    color: #222;
-    background: #f7f9fb;
+/* Soften card surfaces and give them a gentle tint instead of pure white */
+section:not(.hero) {
+  background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(120,198,187,0.03) 100%);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px var(--card-shadow);
+  margin: 22px 14px;
+  padding: 22px 20px;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Add a slight shadow and rounded corners to each section for depth */
-section {
-  background: #fff; /* White background for sections */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.07); /* Soft blue shadow */
-  margin: 24px 10px; /* Space between sections */
-  padding: 24px 16px;
-}
-
-/* Center content and limit width so lines are easy to read */
-section {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 0 16px;
-}
-
-/* Hero Section Styles */
+/* Hero: make the header stand out with a dramatic two-tone overlay */
 .hero {
-  position: relative; /* Needed for overlay */
-  /* Set a background image that covers the whole section */
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
-  background-size: cover;      /* Make the image cover the whole area */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat;
-  color: #fff;                 /* White text for contrast */
-  text-align: center;          /* Center the text */
-  padding: 60px 20px;          /* Add space above and below */
-  border-radius: 0 0 16px 16px; /* Only round bottom corners */
-
-  /* Add a dark overlay for better text readability */
-  /* This uses a simple linear-gradient overlay */
-  background-blend-mode: darken;
-  background-color: rgba(46, 157, 247, 0.45); /* Blue overlay */
-}
-
-/* Constrain hero text inside a centered column for readability */
-.hero-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 64px 16px;
-  text-align: center;
-}
-
-/* Make the headline bold and modern */
-.hero h1 {
-  font-size: 2.5em;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Soft shadow for readability */
-}
-
-/* Style the subheadline */
-.hero p {
-  font-size: 1.2em;
-  margin-top: 0;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.12);
-}
-
-/* Story Section Styles */
-.story {
-  background: linear-gradient(180deg, #ffffff 0%, rgba(120,198,187,0.06) 100%);
-  border-left: 6px solid rgba(120,198,187,0.12);
-  color: var(--muted-text);
-  text-align: center;
-  padding: 28px 20px;
-}
-
-/* Add accent color to section headings */
-h2 {
-  color: #2E9DF7; /* Primary blue */
-  margin-top: 0;
-  font-weight: bold;
-}
-
-/* Call-to-Action Section Styles */
-.call-to-action {
-  background: linear-gradient(90deg, var(--yellow) 0%, var(--orange) 100%);
-  color: #0f1720; /* dark text for legibility on warm background */
-  text-align: center;
-  padding: 28px 20px;
-  box-shadow: 0 10px 26px rgba(255,144,42,0.06);
-}
-
-/* Style the impact story image */
-.impact-image {
   width: 100%;
-  max-width: 320px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px var(--card-shadow-strong);
-  margin-bottom: 16px;
-}
-
-/* Impact story: image on the left, text on the right using float (beginner pattern) */
-.impact-content {
-    background: white;
-    padding: 16px;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-    overflow: auto; /* clear floated image */
-}
-.impact-image {
-    float: left;             /* lets text flow around image */
-    width: 40%;              /* image takes 40% of the space on larger screens */
-    margin-right: 16px;      /* space between image and text */
-    border-radius: 4px;
-}
-
-/* Donate Button Styles */
-.donate-button {
-  display: inline-block;
-  background-color: var(--navy-deep);
+  margin: 0;
   color: #fff;
-  padding: 14px 34px;
-  text-decoration: none;
-  border-radius: 10px;
-  font-weight: 800;
-  font-size: 1.1em;
-  margin-top: 18px;
-  box-shadow: 0 10px 24px rgba(23,75,106,0.14);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  border: none;
-  cursor: pointer;
+  border-radius: 0 0 18px 18px;
+  background-image:
+    linear-gradient(180deg, rgba(23,75,106,0.72) 0%, rgba(255,107,90,0.18) 75%),
+    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 72px 12px;
+  /* subtle overlay blend for smoother color mix */
+  background-blend-mode: multiply;
 }
 
-/* Change button color when hovered */
+/* Constrain text inside the hero so it remains readable on large screens */
+.hero-inner {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+/* Stronger headline and decorative accent line underneath */
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 12px;
+  line-height: 1.02;
+  text-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  position: relative;
+}
+.hero h1::after {
+  /* decorative accent bar that matches the brand yellow */
+  content: "";
+  display: block;
+  width: 72px;
+  height: 6px;
+  background: linear-gradient(90deg, var(--yellow), var(--orange));
+  margin: 12px auto 0;
+  border-radius: 4px;
+  box-shadow: 0 6px 18px rgba(255,150,110,0.12);
+}
+
+/* Subheadline styling with improved contrast and spacing */
+.hero p {
+  font-size: 1.15rem;
+  margin: 0 auto;
+  max-width: 720px;
+  text-shadow: 0 4px 14px rgba(0,0,0,0.38);
+  color: rgba(255,255,255,0.95);
+}
+
+/* Add a subtle floating highlight under hero to separate it from page content */
+.hero::after {
+  content: "";
+  display: block;
+  height: 18px;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.04), transparent 60%);
+  margin-top: 18px;
+}
+
+/* Story headings use brand blue to pop against tinted cards */
+h2 {
+  color: var(--blue);
+  margin-top: 0;
+  font-weight: 700;
+}
+
+/* Make the impact list links more visible and styled like badges */
+.story ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.story li {
+  display: inline-block;
+  margin: 6px 8px 0 0;
+}
+.story a {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(46,157,247,0.12), rgba(46,157,247,0.06));
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(46,157,247,0.06);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.story a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(46,157,247,0.12);
+}
+
+/* Impact image: rounded, warm shadow to match new palette */
+.impact-image {
+  border-radius: 14px;
+  box-shadow: 0 16px 48px var(--card-shadow-strong);
+  max-width: 340px;
+  width: 100%;
+  display: block;
+  margin: 0 auto 14px;
+  transition: transform 260ms ease, box-shadow 260ms ease, opacity 260ms ease;
+  will-change: transform, box-shadow;
+}
+
+/* Call-to-action: warm coral -> yellow gradient that stands out */
+.call-to-action {
+  background: linear-gradient(90deg, var(--coral) 0%, var(--yellow) 100%);
+  color: #0f1720;
+  text-align: center;
+  padding: 28px 20px;
+  border-radius: 14px;
+  box-shadow: 0 16px 48px rgba(255,107,90,0.10);
+}
+
+/* Donate button: deep navy for highest contrast on warm CTA */
+.donate-button {
+  background-color: var(--navy);
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1.05em;
+  box-shadow: 0 14px 36px rgba(23,75,106,0.18);
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 160ms ease, color 160ms ease;
+  will-change: transform, box-shadow, opacity;
+}
+
+/* Hover affordance for donate button */
 .donate-button:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(23,75,106,0.18);
+  box-shadow: 0 24px 56px rgba(23,75,106,0.22);
 }
 
-/* Add some spacing between sections */
-section {
-  margin-bottom: 20px;
+/* Ensure links across the page use the brand blue */
+a {
+  color: var(--blue);
+  text-decoration: underline;
+  transition: color 140ms ease, text-decoration-color 140ms ease;
+}
+a:hover, a:focus {
+  color: var(--blue, #2E9DF7);
+  text-decoration-color: rgba(46,157,247,0.9);
 }
 
-/* 
-  Media Queries for Responsive Design
-  Media queries help make your website look good on different screen sizes,
-  like phones (small screens) and computers (large screens).
-*/
-
-/* This media query applies styles when the screen is 600px wide or less (like on most phones) */
+/* Responsive tweaks: keep hero readable on phones */
 @media (max-width: 600px) {
-  /* Make hero section padding smaller on small screens */
-  .hero {
-    padding: 32px 8px;
-    font-size: 1em;
-  }
-
-  /* Make headline font size smaller so it fits on small screens */
-  .hero h1 {
-    font-size: 1.4em;
-  }
-
-  /* Make subheadline font size smaller */
-  .hero p {
-    font-size: 1em;
-  }
-
-  /* Make story and call-to-action sections have less padding */
-  .story,
-  .call-to-action,
-  .donation-section {
-    padding: 14px 8px;
-  }
-
-  /* Make impact story image smaller and stack above the text */
-  .impact-content {
-    display: block; /* Stack items vertically */
-    text-align: center;
-  }
-
-  .impact-image {
-    width: 90%;    /* Make image take up most of the width */
-    max-width: 220px;
-  }
+  .hero { padding: 48px 12px; border-radius: 0 0 12px 12px; }
+  .hero h1 { font-size: 1.8rem; }
+  .hero p { font-size: 1rem; padding: 0 6px; }
+  .hero h1::after { width: 56px; height: 5px; }
+  .impact-image { max-width: 260px; }
+  .donate-button { padding: 12px 26px; width: auto; }
 }
 
-/* This media query applies styles when the screen is wider than 600px (like on tablets and computers) */
-@media (min-width: 601px) {
-  /* Show image and text side by side in the impact story */
+/* =========== Responsive Layout (mobile-first) =========== */
+
+/* Ensure impact content stacks nicely on small screens (default) and uses flex on wider screens */
+.impact-content {
+  /* default: stacked layout for beginners and phones */
+  display: block;
+  text-align: center;
+  gap: 16px;
+}
+
+/* Make hero CTA wrap neatly on small screens (already mostly set), ensure consistent spacing */
+.hero-cta {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* =========== Interactivity: transitions, hover & focus states =========== */
+
+/* Smooth transitions for interactive elements */
+button, .donate-button, .hero .hero-donate, .hero .hero-learn, .story a, a {
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 160ms ease, color 160ms ease;
+  will-change: transform, box-shadow, opacity;
+}
+
+/* Buttons: subtle lift and stronger shadow on hover/focus */
+.donate-button,
+.hero .hero-donate {
+  transform: translateY(0);
+  box-shadow: 0 10px 24px rgba(23,75,106,0.14);
+}
+.donate-button:hover,
+.donate-button:focus,
+.hero .hero-donate:hover,
+.hero .hero-donate:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(23,75,106,0.22);
+  outline: none;
+}
+
+/* Secondary hero link: lighten background on hover */
+.hero .hero-learn {
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+.hero .hero-learn:hover,
+.hero .hero-learn:focus {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-4px);
+}
+
+/* Story links/badges hover */
+.story a:hover,
+.story a:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(46,157,247,0.12);
+}
+
+/* Images: smooth lift and slight zoom on hover (keeps it subtle) */
+.impact-image:hover,
+.impact-image:focus {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 24px 56px rgba(23,75,106,0.18);
+  outline: none;
+}
+
+/* Improve focus visibility for keyboard users */
+a:focus,
+button:focus,
+.donate-button:focus,
+.hero .hero-donate:focus,
+.hero .hero-learn:focus {
+  box-shadow: 0 0 0 4px rgba(46,157,247,0.12), 0 12px 32px rgba(23,75,106,0.12);
+}
+
+/* =========== Wider screens: switch to side-by-side layouts using Flexbox =========== */
+@media (min-width: 720px) {
+  /* Impact content becomes side-by-side with image and text */
   .impact-content {
-    display: flex;           /* Place items in a row */
-    align-items: center;     /* Vertically center items */
-    justify-content: center; /* Center the whole group */
-    gap: 28px;               /* Space between image and text */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 28px;
     text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .impact-image {
-    width: 300px;
+    flex: 0 0 320px; /* fixed image column */
+    margin: 0;
+    display: block;
+  }
+
+  .impact-content > div {
+    flex: 1 1 460px; /* text column grows as needed */
+  }
+
+  /* Make story badges left-aligned on wider screens */
+  .story ul {
+    justify-content: flex-start;
+  }
+
+  /* Place hero CTA elements inline and larger on wide screens */
+  .hero-cta {
+    gap: 18px;
   }
 }
 
-/* Simple responsive rule: on small screens make the image full width */
-@media (max-width: 600px) {
-    .impact-image {
-        float: none;
-        width: 100%;
-        margin: 0 0 12px 0;
-    }
+/* Slight layout refinement for very wide screens */
+@media (min-width: 1100px) {
+  .hero-inner {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .hero h1 {
+    font-size: 3.2rem;
+  }
 }
