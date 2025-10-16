@@ -23,13 +23,34 @@ Fonts:
   This CSS uses the provided color palette and beginner-friendly styles.
 */
 
+/* Brand palette variables (based on your provided colors) */
+:root {
+  --yellow:     #FFC907; /* Primary yellow */
+  --blue:       #2E9DF7; /* Primary blue */
+  --light-blue: #8BD1CB; /* Secondary light blue */
+  --green:      #4FCB53; /* Accent green */
+  --orange:     #FF902A; /* Accent orange */
+  --red:        #F5402C; /* Accent red */
+  --dark-green: #159A48; /* Dark green */
+  --pink:       #F16061; /* Accent pink */
+
+  /* Harmonized additions for depth and contrast */
+  --navy-deep:  #174b6a; /* deep navy for buttons/contrast */
+  --teal-soft:  #78c6bb; /* softer teal for subtle accents */
+  --page-bg-a:  rgba(46,157,247,0.03); /* soft blue tint */
+  --page-bg-b:  rgba(120,198,187,0.02); /* soft teal tint */
+  --muted-text: #22303a;
+  --card-shadow: rgba(23,75,106,0.06);
+  --card-shadow-strong: rgba(23,75,106,0.10);
+}
+
 /* Set up the main font and background color for the whole page */
 body {
-  background-color: #f4f8fb; /* Soft light blue for a fresh look */
-  font-family: 'Avenir', 'Proxima Nova', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #222;
+  /* keep the original readable font but add a soft layered background */
+  /* font-family is already set earlier; this rule intentionally just updates background and color */
+  background: radial-gradient(900px 400px at 10% 10%, var(--page-bg-a), transparent 8%),
+              linear-gradient(180deg, #fbfdfe 0%, #f3f8fa 100%);
+  color: var(--muted-text);
 }
 
 /* Basic page styles */
@@ -76,6 +97,14 @@ section {
   background-color: rgba(46, 157, 247, 0.45); /* Blue overlay */
 }
 
+/* Constrain hero text inside a centered column for readability */
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px 16px;
+  text-align: center;
+}
+
 /* Make the headline bold and modern */
 .hero h1 {
   font-size: 2.5em;
@@ -94,10 +123,11 @@ section {
 
 /* Story Section Styles */
 .story {
-  background-color: #8BD1CB; /* Secondary Light Blue */
-  color: #222;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(120,198,187,0.06) 100%);
+  border-left: 6px solid rgba(120,198,187,0.12);
+  color: var(--muted-text);
   text-align: center;
-  padding: 30px 20px;
+  padding: 28px 20px;
 }
 
 /* Add accent color to section headings */
@@ -109,19 +139,20 @@ h2 {
 
 /* Call-to-Action Section Styles */
 .call-to-action {
-  background-color: #FFC907; /* Primary Yellow */
-  color: #222;
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--orange) 100%);
+  color: #0f1720; /* dark text for legibility on warm background */
   text-align: center;
-  padding: 30px 20px;
+  padding: 28px 20px;
+  box-shadow: 0 10px 26px rgba(255,144,42,0.06);
 }
 
 /* Style the impact story image */
 .impact-image {
   width: 100%;
   max-width: 320px;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--card-shadow-strong);
   margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.10);
 }
 
 /* Impact story: image on the left, text on the right using float (beginner pattern) */
@@ -142,24 +173,24 @@ h2 {
 /* Donate Button Styles */
 .donate-button {
   display: inline-block;
-  background-color: #4FCB53; /* Green */
+  background-color: var(--navy-deep);
   color: #fff;
-  padding: 14px 32px;
+  padding: 14px 34px;
   text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
+  border-radius: 10px;
+  font-weight: 800;
   font-size: 1.1em;
   margin-top: 18px;
-  box-shadow: 0 2px 8px rgba(79, 203, 83, 0.10);
-  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 10px 24px rgba(23,75,106,0.14);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
   border: none;
   cursor: pointer;
 }
 
 /* Change button color when hovered */
 .donate-button:hover {
-  background-color: #159A48; /* Dark Green */
-  transform: translateY(-2px) scale(1.04); /* Slight lift */
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(23,75,106,0.18);
 }
 
 /* Add some spacing between sections */
